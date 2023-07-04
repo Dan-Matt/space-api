@@ -19,11 +19,20 @@ namespace SpaceApi.Controllers
             _planetService = planetService;
         }
 
+        /// <summary>
+        /// Get all planets
+        /// </summary>
+        /// <returns>All planets</returns>
         [HttpGet(Name = "GetPlanets")]
         public async Task<IEnumerable<PlanetDto>> GetAllAsync()
         {
-            //_logger.Log("Getting all planets");
-            return await _planetService.GetAllAsync();
+            _logger.Log(LogLevel.Information, "Getting all planets");
+
+            List<PlanetDto> planets = (await _planetService.GetAllAsync()).ToList();
+            
+            _logger.Log(LogLevel.Information, "Retrieved {count} planets", planets.Count);
+            
+            return planets;
         }
     }
 }

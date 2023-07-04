@@ -14,6 +14,7 @@ namespace SpaceApi.DataSources
             _connectionString = configuration.GetConnectionString("Postgres");
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<PlanetDto>> GetAllAsync()
         {
             using (var connection = new NpgsqlConnection(_connectionString))

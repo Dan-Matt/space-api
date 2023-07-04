@@ -13,6 +13,7 @@ namespace SpaceApi.Services
             _planetDataSource = planetDataSource;
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<PlanetDto>> GetAllAsync()
         {
             return await _planetDataSource.GetAllAsync();
